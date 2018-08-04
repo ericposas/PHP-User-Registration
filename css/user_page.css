@@ -1,0 +1,62 @@
+
+#logout_btn{
+  float: right;
+  cursor: pointer;
+}
+#upload_btn{
+  margin: 18px 0 0 8px;
+}
+input[type="file"]{
+  margin: 12px 0 0 8px;
+}
+img[src="../icons/gear.png"]{
+  float: right;
+  width: 18px;
+  padding-left: 2px;
+  user-select: none;
+  cursor: pointer;
+}
+#settings{
+  display: block;
+  position: absolute;
+  margin: auto;
+  width: 600px;
+  height: 400px;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.25);
+  display: none;
+}
+#settings-close-button,
+#profile-photo-modal-close-button{
+  float: right;
+  margin: 2px 4px 0 0;
+  cursor: pointer;
+}
+#profile-photo,
+#profile-photo-change{
+  margin: 8px 0 0 8px;
+}
+#profile-photo{
+}
+#profile-photo-change{
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+}
+#profile-photo-modal{
+  display: block;
+  position: absolute;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.25);
+  display: none;
+}
