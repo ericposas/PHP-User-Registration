@@ -1,5 +1,5 @@
-
-function photo_modal() {
+exports.photo_modal = (function() {
+  // "constructor" 
   var photo_change = document.getElementById('profile-photo-change');
   var photo_modal = document.getElementById('profile-photo-modal');
   var x = document.getElementById('profile-photo-modal-close-button');
@@ -15,4 +15,5 @@ function photo_modal() {
       app.photo_modal.state = 'closed';
     }
   }
-}
+  
+}());

@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+      html{ font-family: 'Open Sans', sans-serif; }
+    </style>
   </head>
   <body>
     <h2>Please register for the site</h2>

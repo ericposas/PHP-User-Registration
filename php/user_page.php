@@ -2,6 +2,8 @@
   session_start();
   require 'redirect.php';
   require 'connect.php';
+  require 'user_details.php';
+  require 'photo_modal.php';
   // set user photo if one exists
   $stmt = $conn->prepare("SELECT `photo` FROM `users` WHERE `username` = ?");
   $stmt->bind_param("s", $_SESSION['username']);
@@ -18,11 +20,18 @@
   <head>
     <meta charset="utf-8">
     <link href="../css/user_page.css" rel="stylesheet">
-    <script src="../js/settings-modal.js"></script>
-    <script src="../js/profile-photo.js"></script>
-    <script src="../js/user_page.js"></script>
+    <script>
+      let app = {
+        settings: {
+          state: 'closed'
+        },
+        photo_modal: {
+          state: 'closed'
+        }
+      };
+    </script>
   </head>
-  <body onload="setup_userpage();">
+  <body>
     <?php if(isset($_SESSION['username'])){ ?>
       <img id="gear" src="../icons/gear.png" draggable="false">
       <form method="post" action="logout.php">
@@ -48,13 +57,13 @@
     <div id="settings">
       <div id="settings-close-button">x</div>
       <div id="profile-photo-change">change profile photo</div>
-      <div id="profile-photo-modal">
-        <div id="profile-photo-modal-close-button">x</div>
-        <form enctype="multipart/form-data" method="post" action="upload_photo.php">
-          <input type="file" name="file">
-          <input id="upload_btn" type="submit" value="Upload">
-        </form>
-      </div>
+      <div id="add-change-user-details">add/change user details</div>
+      <!-- change photo modal -->
+      <?php photo_modal(); ?>
+      <!-- add/change details modal -->
+      <?php user_details(); ?>
+      
     </div>
   </body>
+  <script src="../js/application.js"></script>
 </html>

@@ -1,5 +1,5 @@
-
-function settings_modal() {
+exports.settings_modal = (function() {
+  // "constructor" 
   var gear = document.getElementById('gear');
   var settings = document.getElementById('settings');
   var x = document.getElementById('settings-close-button');
@@ -14,4 +14,4 @@ function settings_modal() {
       app.settings.state = 'closed';
     }
   }
-}
+}());
