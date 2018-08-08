@@ -7,7 +7,7 @@ function user_details_modal(){
     <div id=\"enter-your-details\">Please update your details for storage in our database.</div>
     <form id=\"user-details-input\" method=\"post\" action=\"./process_user_details.php\">
       <span class=\"input-label\">E-mail:</span> <input type=\"text\" name=\"email\" placeholder=\"firstlast@somecompany.com\"><br>
-      <span class=\"input-label\">Address:</span> <input type=\"text\" name=\"address\" placeholder=\"123 Fancy St.\">
+      <span class=\"input-label\">Address:</span> <input type=\"text\" name=\"address\" placeholder=\"123 Fancy St.\"><br>
        <span class=\"input-label\">Zip code:</span> <input type=\"text\" name=\"zipcode\" placeholder=\"75000\"><br>
       <span class=\"input-label\">State:</span><select name=\"state\">
 	      <option value=\"AL\">Alabama</option>

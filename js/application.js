@@ -48,9 +48,11 @@ exports.settings_modal = (function() {
   function toggle_settings_modal(){
     if(app.settings.state == 'closed'){
       settings.style.display = 'block';
+      document.getElementById('dimmer').style.opacity = 1;
       app.settings.state = 'open';
     }else{
       settings.style.display = 'none';
+      document.getElementById('dimmer').style.opacity = 0;
       app.settings.state = 'closed';
     }
   }
