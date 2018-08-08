@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-      html{ font-family: 'Open Sans', sans-serif; }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({ google: {families: ['Open Sans']} });</script>
+    <style>html{ font-family: 'Open Sans', sans-serif; }</style>
   </head>
   <body>
     <h2>Please register for the site</h2>

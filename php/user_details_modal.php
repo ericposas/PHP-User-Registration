@@ -1,6 +1,6 @@
 <?php
 
-function user_details(){
+function user_details_modal(){
   echo "
   <div id=\"change-user-details-modal\">
     <div id=\"change-user-details-modal-close-button\">x</div>

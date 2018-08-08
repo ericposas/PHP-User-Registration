@@ -4,7 +4,8 @@ require 'connect.php';
 require 'redirect.php';
 
 if(isset($_POST['username']) && !empty($_POST['username'])){
-  if(preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['username'])) {
+  if(preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['username']) ||
+     preg_match('/[a-zA-Z]/', $_POST['username'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     check_db_for_user();
   }else{
@@ -39,6 +40,7 @@ function continue_to_register_password(){
        preg_match("@[0-9]@", $_POST['password'])){
       $password = mysqli_real_escape_string($conn, $_POST['password']);
       $hash = password_hash($password, PASSWORD_BCRYPT);
+      stmt_one($hash);
     }else{
       echo "Password must contain at least one number, one uppercase, one lowercase letter, be at least 8 characters in length.";
       redirect_to("signup.php");
@@ -47,19 +49,40 @@ function continue_to_register_password(){
     echo "Please make up a secure password.";
     redirect_to("signup.php");
   }
+}
 
+function stmt_one($hash){
+  global $conn, $username;
   $stmt = $conn->prepare("INSERT INTO `users`(`username`, `password`) VALUES (?, ?)");
   $stmt->bind_param("ss", $username, $hash);
   if($stmt->execute()){
     if(!is_dir("../Users/".$username)){
       mkdir("../Users/".$username, 0777, true);
       mkdir("../Users/".$username."/profile_photo", 0777, true);
+      stmt_two();
     }
-    redirect_to("../html/registration_successful.html", 0);
+  }else{
+    echo $stmt->error;
+    redirect_to('signup.php');
   }
-
-  $stmt->close();
-  $conn->close();
 }
 
- ?>
+function stmt_two(){
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO `user_info`(`email`, `address`, `zipcode`, `state`) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param("ssss", $none, $none, $zero, $nostate);
+  $none = "none";
+  $zero = 00000;
+  $nostate = "XX";
+  if($stmt->execute()){
+    redirect_to("../html/registration_successful.html", 0);
+    $stmt->close();
+    $conn->close();
+  }else{
+    echo $stmt->error;
+    redirect_to('signup.php');
+  }
+}
+
+
+?>

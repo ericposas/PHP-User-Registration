@@ -18,25 +18,22 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
   }else{
     $email_set = 1;
   }
+}else{
+  echo "Please enter an e-mail";
+  redirect_to("./user_page.php");
 }
 
 if($email_set > 0){
-
   if(isset($_POST['address']) && !empty($_POST['address'])){
-    $address = $_POST['address'];
-    /*
-    if(!preg_match("/^[a-zA-Z]([a-zA-Z-]+\s)+\d{1,4}$/", $address)){
-      echo "Invalid address";
-      redirect_to("./user_page.php");
-    }else{ */
+    $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
     $address_set = 1;
-    /* } */
+  }else{
+    echo "Please enter an address";
+    redirect_to("./user_page.php");
   }
-
 }
 
 if($address_set > 0){
-
   if(isset($_POST['zipcode']) && !empty($_POST['zipcode'])){
     $zipcode = $_POST['zipcode'];
     if(!preg_match("/\d{5}/", $zipcode)){
@@ -45,34 +42,51 @@ if($address_set > 0){
     }else{
       $zipcode_set = 1;
     }
+  }else{
+    echo "Please enter your zipcode";
+    redirect_to("./user_page.php");
   }
-  
 }
 
 if($zipcode_set > 0){
-  
-  echo $_POST['state'];
-  
   if(isset($_POST['state'])){
     $state = $_POST['state'];
-    database_enter_info();
+    get_user_id();
   }else{
     echo "Please select a State";
     redirect_to("./user_page.php");
   }
-  
 }
 
-function database_enter_info(){
-  global $conn, $email, $address, $zipcode, $state;
-  $stmt = $conn->prepare("INSERT INTO `user_info`(`email`, `address`, `zipcode`, `state`) VALUES (?, ?, ?, ?) WHERE `username` = ?");
-  $stmt->bind_param("sssss", $email, $address, $zipcode, $state, $_SESSION['username']);
+
+function get_user_id(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT `id` FROM `users` WHERE `username` = ?");
+  $stmt->bind_param("s", $_SESSION['username']);
   if($stmt->execute()){
-    echo "Data entered successfully.";
+    $stmt->bind_result($id);
+    if($stmt->fetch() > 0){
+      $_SESSION['id'] = $id;
+      $stmt->close();
+      database_enter_info($id);
+    }else{
+      echo $stmt->error;
+      redirect_to("user_page.php");
+    }
+  }
+}
+
+function database_enter_info($id){
+  global $conn, $email, $address, $zipcode, $state;
+  $stmt = $conn->prepare("UPDATE `user_info` SET `email`=?, `address`=?, `zipcode`=?, `state`=? WHERE `id` = ?");
+  $stmt->bind_param("ssisi", $email, $address, $zipcode, $state, $id);
+  if($stmt->execute()){
+    echo "Data entered successfully!";
     $stmt->close();
-    $conn->close();
-    redirect_to("./user_page.php");
-    
+    redirect_to("user_page.php");
+  }else{
+    echo $stmt->error;
+    redirect_to("user_page.php");
   }
 }
 

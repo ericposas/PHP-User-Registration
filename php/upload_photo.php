@@ -43,6 +43,7 @@ function insert_photo_name_into_db(){
   $stmt = $conn->prepare("UPDATE `users` SET `photo`=? WHERE `username`=?");
   $stmt->bind_param("ss", $_FILES['file']['name'], $_SESSION['username']);
   if($stmt->execute()){
+    $_SESSION['photo'] = $_FILES['file']['name'];
     redirect_to("user_page.php");
   }
   $stmt->close();

@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({ google: {families: ['Open Sans']} });</script>
     <link href="css/index.css" rel="stylesheet">
   </head>
   <body>
