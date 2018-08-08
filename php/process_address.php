@@ -5,32 +5,15 @@ session_start();
 require 'redirect.php';
 require 'connect.php';
 
-$email_set = 0;
 $address_set = 0;
 $zipcode_set = 0;
-# $state_set = 0;
 
-if(isset($_POST['email']) && !empty($_POST['email'])){
-  $email = $_POST['email'];
-  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "Invalid email format";
-    redirect_to("./user_page.php");
-  }else{
-    $email_set = 1;
-  }
+if(isset($_POST['address']) && !empty($_POST['address'])){
+  $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+  $address_set = 1;
 }else{
-  echo "Please enter an e-mail";
+  echo "Please enter an address";
   redirect_to("./user_page.php");
-}
-
-if($email_set > 0){
-  if(isset($_POST['address']) && !empty($_POST['address'])){
-    $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
-    $address_set = 1;
-  }else{
-    echo "Please enter an address";
-    redirect_to("./user_page.php");
-  }
 }
 
 if($address_set > 0){
@@ -78,8 +61,8 @@ function get_user_id(){
 
 function database_enter_info($id){
   global $conn, $email, $address, $zipcode, $state;
-  $stmt = $conn->prepare("UPDATE `user_info` SET `email`=?, `address`=?, `zipcode`=?, `state`=? WHERE `id` = ?");
-  $stmt->bind_param("ssisi", $email, $address, $zipcode, $state, $id);
+  $stmt = $conn->prepare("UPDATE `user_info` SET `address`=?, `zipcode`=?, `state`=? WHERE `id` = ?");
+  $stmt->bind_param("sisi", $address, $zipcode, $state, $id);
   if($stmt->execute()){
     echo "Data entered successfully!";
     $stmt->close();

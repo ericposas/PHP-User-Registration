@@ -1,5 +1,7 @@
 <?php
 
+  # retrieves user data from the database 
+
   session_start();
 
   require 'redirect.php';

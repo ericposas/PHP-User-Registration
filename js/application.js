@@ -1,14 +1,15 @@
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 let settings = require('./settings-modal.js');
-let photo = require('./photo-modal.js');
-let user = require('./change-user-details.js');
+let photo_modal = require('./photo-modal.js');
+let address_modal = require('./change-address.js');
+let email_modal = require('./change-email.js');
 
-},{"./change-user-details.js":2,"./photo-modal.js":3,"./settings-modal.js":4}],2:[function(require,module,exports){
-exports.change_user_details = (function(){
+},{"./change-address.js":2,"./change-email.js":3,"./photo-modal.js":4,"./settings-modal.js":5}],2:[function(require,module,exports){
+exports.change_address = (function(){
   
-  let add_change_details_elt = document.getElementById('add-change-user-details');
-  let add_change_details_x = document.getElementById('change-user-details-modal-close-button');
-  let addchange_popup = document.getElementById('change-user-details-modal');
+  let add_change_details_elt = document.getElementById('add-change-address');
+  let add_change_details_x = document.getElementById('change-address-modal-close-button');
+  let addchange_popup = document.getElementById('change-address-modal');
   add_change_details_elt.addEventListener('click', function(){
     addchange_popup.style.display = 'block';
   });
@@ -18,6 +19,20 @@ exports.change_user_details = (function(){
   
 }());
 },{}],3:[function(require,module,exports){
+exports.change_email = (function(){
+  
+  var c_email = document.getElementById('add-change-email');
+  var x_btn = document.getElementById('change-email-modal-close-button');
+  var email_modal = document.getElementById('change-email-modal');
+  c_email.addEventListener('click', function(){
+    email_modal.style.display = 'block';
+  });
+  x_btn.addEventListener('click', function(){
+    email_modal.style.display = 'none';
+  });
+  
+}());
+},{}],4:[function(require,module,exports){
 exports.photo_modal = (function() {
   // "constructor" 
   var photo_change = document.getElementById('profile-photo-change');
@@ -37,7 +52,7 @@ exports.photo_modal = (function() {
   }
   
 }());
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 exports.settings_modal = (function() {
   // "constructor" 
   var gear = document.getElementById('gear');

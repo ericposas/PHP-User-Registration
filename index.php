@@ -8,7 +8,7 @@
     <link href="css/index.css" rel="stylesheet">
   </head>
   <body>
-    <h2>PHP User Registration & Login</h2>
+    <h2>PHP User Registration &amp; Login</h2>
     <div>Existing users, please login:</div><br>
     <form method="post" action="php/login.php">
       <div>username:</div>

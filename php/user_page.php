@@ -1,7 +1,7 @@
 <?php
   require 'grab_user_info.php';
   # var_dump($_SESSION['user_info']);
-  require 'user_details_modal.php';
+  require 'address_modal.php';
   require 'photo_modal.php';
 ?>
 
@@ -87,12 +87,27 @@
     <div id="settings">
       <div id="settings-close-button">x</div>
       <div id="profile-photo-change">change profile photo</div>
-      <div id="add-change-user-details">add/change user details</div>
+      <div id="add-change-email">add/change email</div>
+      <div id="add-change-address">add/change address</div>
       <!-- change photo modal -->
-      <?php photo_modal(); ?>
-      <!-- add/change details modal -->
-      <?php user_details_modal(); ?>
-      
+      <?php
+        photo_modal();
+        # change email modal 
+        echo "
+          <div id=\"change-email-modal\">
+            <div id=\"change-email-modal-close-button\">x</div>
+            <form method=\"post\" action=\"process_email_info.php\">
+              <span class=\"input-label email-label\">E-mail:</span>
+              <br>
+              <input type=\"text\" name=\"email\" placeholder=\"firstlast@somecompany.com\">
+              <br>
+              <input type=\"submit\" value=\"Submit e-mail\">
+            </form>
+          </div>
+        ";
+        # add/change details modal 
+        user_details_modal();
+      ?>
     </div>
   </body>
   <script src="../js/application.js"></script>
