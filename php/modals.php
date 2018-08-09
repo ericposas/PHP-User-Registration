@@ -1,10 +1,28 @@
 <?php
 
+function phone_number_modal(){
+  echo "
+    <div id=\"phone-number-modal\">
+      <div id=\"phone-number-modal-close-button\">x</div>
+      <div id=\"update-phone-number-msg\">
+        Please update your phone number.
+      </div>
+      <form method=\"post\" action=\"process_phone_number.php\">
+        <span class=\"\">Phone:</span>
+        <br>
+        <input type=\"text\" name=\"phone\" placeholder=\"1231231234\">
+        <br>
+        <input type=\"submit\" value=\"Submit phone\">
+      </form>
+    </div>
+  ";
+}
+
 function photo_modal(){
   echo "
   <div id=\"profile-photo-modal\">
     <div id=\"profile-photo-modal-close-button\">x</div>
-    <div id=\"choose-a-photo\">
+    <div id=\"choose-a-photo-msg\">
       Please choose a photo for upload.
     </div>
     <form id=\"upload-form\" enctype=\"multipart/form-data\" method=\"post\" action=\"upload_photo.php\">
@@ -19,6 +37,9 @@ function email_modal(){
   echo "
     <div id=\"change-email-modal\">
       <div id=\"change-email-modal-close-button\">x</div>
+      <div id=\"update-email-msg\">
+        Please update your e-mail address.
+      </div>
       <form method=\"post\" action=\"process_email_info.php\">
         <span class=\"input-label email-label\">E-mail:</span>
         <br>
@@ -34,7 +55,9 @@ function user_address_modal(){
   echo "
   <div id=\"change-address-modal\">
     <div id=\"change-address-modal-close-button\">x</div>
-    <div id=\"enter-your-details\">Please update your address for storage in our database.</div>
+    <div id=\"enter-your-details\">
+      Please update your address for storage in our database.
+    </div>
     <form id=\"user-details-input\" method=\"post\" action=\"./process_address.php\">
       <span class=\"input-label\">Address:</span> <input type=\"text\" name=\"address\" placeholder=\"123 Fancy St.\"><br>
        <span class=\"input-label\">Zip code:</span> <input type=\"text\" name=\"zipcode\" placeholder=\"75000\"><br>

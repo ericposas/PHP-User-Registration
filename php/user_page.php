@@ -97,6 +97,7 @@
     <div id="settings">
       <div id="settings-close-button">x</div>
       <div id="profile-photo-change" class="update-button">change profile photo</div>
+      <div id="add-change-phone" class="update-button">add/change phone</div>
       <div id="add-change-email" class="update-button">add/change email</div>
       <div id="add-change-address" class="update-button">add/change address</div>
       <div id="about-me-update" class="update-button">update about me blurb</div>
@@ -105,7 +106,7 @@
         # change photo modal 
         photo_modal();
         # change phone number modal 
-        # phone_number_modal();
+        phone_number_modal();
         # change email modal 
         email_modal();
         # add/change address modal 
