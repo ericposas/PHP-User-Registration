@@ -1,6 +1,7 @@
 html{
   font-size: .9em;
   font-family: 'Open Sans', sans-serif;
+  background-color: rgba(65,105,225,.35); /*#4169E1; --royalblue hex val*/
 }
 body{
   margin: 0;
@@ -14,6 +15,16 @@ body{
   pointer-events: none;
   background-color: rgba(0,0,0,0.2);
   opacity: 0;
+}
+input[type="submit"],
+button{
+  border: none;
+  border: 2px solid #666;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: white;
+  font-weight: 600;
+  color: #666;
 }
 #logout_btn{
   float: right;
@@ -33,9 +44,10 @@ input[type="file"]{
 img[src="../icons/gear.png"]{
   float: right;
   width: 18px;
-  padding-left: 2px;
+  padding: 5px 5px 0 5px;
   user-select: none;
   cursor: pointer;
+  opacity: .75;
 }
 #settings{
   display: block;
@@ -52,29 +64,37 @@ img[src="../icons/gear.png"]{
 }
 #user-name-color{
   font-weight: bold;
-  color: cornflowerblue;
+  color: royalblue;
 }
 #settings-close-button,
 #profile-photo-modal-close-button,
 #change-address-modal-close-button,
-#change-email-modal-close-button{
+#change-email-modal-close-button,
+#about-me-modal-close-button{
   float: right;
   margin: 4px 6px 0 0;
   cursor: pointer;
+  font-weight: bold;
 }
 #profile-photo{
+  border: 2px solid royalblue;
   border-radius: 4px;
   margin: 8px 0 0 16px;
+  cursor: pointer;
 }
 #profile-photo{
 }
 #profile-photo-change,
 #add-change-email,
-#add-change-address{
+#add-change-address,
+#about-me-update{
   margin: 12px 0 0 12px;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+}
+.update-button:hover{
+  color: blue;
 }
 #profile-photo-change{
   width: 400px;
@@ -86,7 +106,8 @@ img[src="../icons/gear.png"]{
 
 #profile-photo-modal,
 #change-address-modal,
-#change-email-modal{
+#change-email-modal,
+#about-me-modal{
   display: block;
   position: absolute;
   margin: auto;
@@ -132,12 +153,38 @@ input[name="address"]{
 }
 
 #user-email-tag,
-#user-address-tag{
+#user-address-tag,
+#user-blurb-tag{
   margin: 0 0 0 12px;
   font-weight: bold;
 }
 
 #user-email-content,
+#user-address-content,
+#user-blurb-content{
+  margin: 0 0 0 12px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 8px;
+  background-color: #FFF;
+  padding: 12px;
+}
+
+#user-blurb-content{
+  width: 88%;
+}
+
+#user-email-content,
 #user-address-content{
-  margin: 0 0 0 16px;
+  width: unset;
+  display: inline-block;
+}
+
+textarea[name="blurb"]{
+  width: 88%;
+  height: 200px;
+  margin: 12px 0 0 12px;
+}
+
+input[name="blurb-submit"]{
+  margin: 0 0 0 10px;
 }

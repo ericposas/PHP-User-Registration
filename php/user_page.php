@@ -3,6 +3,7 @@
   # var_dump($_SESSION['user_info']);
   require 'address_modal.php';
   require 'photo_modal.php';
+  require 'about_me_modal.php';
 ?>
 
 <!DOCTYPE html>
@@ -78,17 +79,29 @@
               ."</div>";
             }
           ?>
-        </div><br>
+        </div>
+        <br>
+        <div id="user-blurb">
+          <?php
+            if(isset($_SESSION['blurb'])){
+              echo
+                "<div id=\"user-blurb-tag\">About me:</div>"
+                ."<div id=\"user-blurb-content\">".$_SESSION['blurb']."</div>";
+            }
+          ?>
+        </div>
       </div>
     </div>
     
     <div id="dimmer"></div>
     
+    <!-- SETTING MODAL (gear in top right corner) -->
     <div id="settings">
       <div id="settings-close-button">x</div>
-      <div id="profile-photo-change">change profile photo</div>
-      <div id="add-change-email">add/change email</div>
-      <div id="add-change-address">add/change address</div>
+      <div id="profile-photo-change" class="update-button">change profile photo</div>
+      <div id="add-change-email" class="update-button">add/change email</div>
+      <div id="add-change-address" class="update-button">add/change address</div>
+      <div id="about-me-update" class="update-button">update about me blurb</div>
       <!-- change photo modal -->
       <?php
         photo_modal();
@@ -105,8 +118,11 @@
             </form>
           </div>
         ";
-        # add/change details modal 
-        user_details_modal();
+        # add/change address modal 
+        user_address_modal();
+        # about blurb 
+        about_me_modal();
+        
       ?>
     </div>
   </body>

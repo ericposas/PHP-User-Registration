@@ -8,6 +8,7 @@ unset($_SESSION['username']);
 unset($_SESSION['photo']);
 unset($_SESSION['id']);
 unset($_SESSION['user_info']);
+unset($_SESSION['blurb']);
 
 echo "
   <script src='https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'></script>

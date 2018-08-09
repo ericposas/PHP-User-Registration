@@ -1,6 +1,6 @@
 <?php
 
-function user_details_modal(){
+function user_address_modal(){
   echo "
   <div id=\"change-address-modal\">
     <div id=\"change-address-modal-close-button\">x</div>
