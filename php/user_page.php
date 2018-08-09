@@ -1,9 +1,7 @@
 <?php
   require 'grab_user_info.php';
-  # var_dump($_SESSION['user_info']);
-  require 'address_modal.php';
-  require 'photo_modal.php';
-  require 'about_me_modal.php';
+  require 'modals.php';
+  require 'about_me_modal.php'; #-- about_me_modal.php contains it's own processing and view code 
 ?>
 
 <!DOCTYPE html>
@@ -102,22 +100,14 @@
       <div id="add-change-email" class="update-button">add/change email</div>
       <div id="add-change-address" class="update-button">add/change address</div>
       <div id="about-me-update" class="update-button">update about me blurb</div>
-      <!-- change photo modal -->
+      <!-- all the various settings modals --> 
       <?php
+        # change photo modal 
         photo_modal();
+        # change phone number modal 
+        # phone_number_modal();
         # change email modal 
-        echo "
-          <div id=\"change-email-modal\">
-            <div id=\"change-email-modal-close-button\">x</div>
-            <form method=\"post\" action=\"process_email_info.php\">
-              <span class=\"input-label email-label\">E-mail:</span>
-              <br>
-              <input type=\"text\" name=\"email\" placeholder=\"firstlast@somecompany.com\">
-              <br>
-              <input type=\"submit\" value=\"Submit e-mail\">
-            </form>
-          </div>
-        ";
+        email_modal();
         # add/change address modal 
         user_address_modal();
         # about blurb 

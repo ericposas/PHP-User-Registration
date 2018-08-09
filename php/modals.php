@@ -1,5 +1,35 @@
 <?php
 
+function photo_modal(){
+  echo "
+  <div id=\"profile-photo-modal\">
+    <div id=\"profile-photo-modal-close-button\">x</div>
+    <div id=\"choose-a-photo\">
+      Please choose a photo for upload.
+    </div>
+    <form id=\"upload-form\" enctype=\"multipart/form-data\" method=\"post\" action=\"upload_photo.php\">
+      <input type=\"file\" name=\"file\"><br><br>
+      <input id=\"upload-btn\" type=\"submit\" value=\"Upload\">
+    </form>
+  </div>
+  ";
+}
+
+function email_modal(){
+  echo "
+    <div id=\"change-email-modal\">
+      <div id=\"change-email-modal-close-button\">x</div>
+      <form method=\"post\" action=\"process_email_info.php\">
+        <span class=\"input-label email-label\">E-mail:</span>
+        <br>
+        <input type=\"text\" name=\"email\" placeholder=\"firstlast@somecompany.com\">
+        <br>
+        <input type=\"submit\" value=\"Submit e-mail\">
+      </form>
+    </div>
+  ";
+}
+
 function user_address_modal(){
   echo "
   <div id=\"change-address-modal\">
